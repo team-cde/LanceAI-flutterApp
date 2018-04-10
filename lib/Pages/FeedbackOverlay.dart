@@ -61,7 +61,6 @@ class FeedbackOverlayState extends State<FeedbackOverlay> with SingleTickerProvi
               style: new TextStyle(color: Colors.white, fontSize: 25.0),
               autofocus: true,
               textAlign: TextAlign.center,
-
             )
           ],
         ),

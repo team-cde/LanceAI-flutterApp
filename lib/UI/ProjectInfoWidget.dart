@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lancelot_v2/Project.dart';
+import 'package:lancelot_v2/Model/Project.dart';
 
 
 class ProjectInfo extends StatefulWidget {

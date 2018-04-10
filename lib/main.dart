@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:lancelot_v2/Project.dart';
-import 'package:lancelot_v2/ProjectInfoWidget.dart';
-import 'package:lancelot_v2/FeedbackOverlay.dart';
-import 'package:lancelot_v2/AnswerButton.dart';
+import 'package:lancelot_v2/Model/Project.dart';
+import 'package:lancelot_v2/UI/ProjectInfoWidget.dart';
+import 'package:lancelot_v2/Pages/FeedbackOverlay.dart';
+import 'package:lancelot_v2/UI/AnswerButton.dart';
 
 void main() => runApp(new MyApp());
 
