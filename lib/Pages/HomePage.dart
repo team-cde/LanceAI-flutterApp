@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'ProjectBrowsePage.dart';
+import 'ProjectListPage.dart';
+import 'ProjectDetailPage.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -29,9 +31,9 @@ class HomePageState extends State<HomePage> {
           ),
           body: new TabBarView(
             children: [
-              new Icon(Icons.directions_car),
+              new ProjectListPage(),
               new ProjectBrowsePage(),
-              new Icon(Icons.directions_bike),
+              new Icon(Icons.person)
             ],
           ),
         ),

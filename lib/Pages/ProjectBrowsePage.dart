@@ -13,11 +13,7 @@ class ProjectBrowsePage extends StatefulWidget {
 }
 
 class ProjectBrowsePageState extends State<ProjectBrowsePage> {
-  List<Project> _projects = ([
-    new Project("Star Finder App", "NASA", "160/hr", "6 months"),
-    new Project("Fintech Website", "Chase", "180/hr", "4 months"),
-    new Project("Mobile Game", "Runescape", "140/hr", "12 months"),
-  ]);
+  List<Project> _projects = Project.getDefaultProjectList();
   int _projectIndex;
   bool _answer;
   bool _isFeedbackOverlayVisible;
@@ -65,6 +61,15 @@ class ProjectBrowsePageState extends State<ProjectBrowsePage> {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
+                    //consider replace with https://docs.flutter.io/flutter/material/RaisedButton-class.html
+//                    new RaisedButton(
+//                      onPressed: () => setAnswer(false),
+//                      color: Colors.red,
+//                    ),
+//                    new RaisedButton(
+//                      onPressed: () => setAnswer(true),
+//                      color: Colors.green,
+//                    )
                     new AnswerButton(false, () => setAnswer(false)),
                     new AnswerButton(true, () => setAnswer(true)),
                   ],
