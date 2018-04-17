@@ -21,7 +21,7 @@ class AnswerButton extends StatelessWidget {
 //                ),
                 padding: new EdgeInsets.all(60.0),
                 child: new Text(_answer == true ? "YES" : "NO",
-                    style: new TextStyle(color: Colors.white, fontSize: 40.0, fontWeight: FontWeight.bold, fontStyle: FontStyle.italic)
+                    style: new TextStyle(color: Colors.white, fontSize: 35.0, fontWeight: FontWeight.bold, fontStyle: FontStyle.italic)
                 ),
               )
           ),

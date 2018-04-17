@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'ProjectBrowsePage.dart';
 import 'ProjectListPage.dart';
-import 'ProjectDetailPage.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -18,6 +17,7 @@ class HomePageState extends State<HomePage> {
     return new MaterialApp(
       home: new DefaultTabController(
         length: 3,
+        initialIndex: 1,
         child: new Scaffold(
           appBar: new AppBar(
             bottom: new TabBar(

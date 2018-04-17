@@ -3,7 +3,8 @@ import 'package:lancelot_v2/Model/Project.dart';
 import 'package:lancelot_v2/UI/ProjectInfoWidget.dart';
 import 'package:lancelot_v2/Pages/FeedbackOverlay.dart';
 import 'package:lancelot_v2/UI/AnswerButton.dart';
-
+import 'package:lancelot_v2/firebase_db.dart';
+import 'package:lancelot_v2/Model/job.dart';
 
 class ProjectBrowsePage extends StatefulWidget {
   @override
@@ -13,16 +14,25 @@ class ProjectBrowsePage extends StatefulWidget {
 }
 
 class ProjectBrowsePageState extends State<ProjectBrowsePage> {
-  List<Project> _projects = Project.getDefaultProjectList();
+  List<Job> _projects = [new Job("1","1",{},"title","description","3 months","350/hr")];
   int _projectIndex;
   bool _answer;
   bool _isFeedbackOverlayVisible;
+  final fb = new FirebaseDB();
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     _projectIndex = 0;
+    updateProjectList();
+  }
+
+  void updateProjectList() async {
+    _projects = await fb.getAllJobs();
+    setState(() {
+
+    });
   }
 
   void setAnswer(bool answer) {
@@ -40,7 +50,7 @@ class ProjectBrowsePageState extends State<ProjectBrowsePage> {
     }
   }
 
-  Project currProject() {
+  Job currProject() {
     return _projects[_projectIndex];
   }
 
@@ -61,15 +71,6 @@ class ProjectBrowsePageState extends State<ProjectBrowsePage> {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
-                    //consider replace with https://docs.flutter.io/flutter/material/RaisedButton-class.html
-//                    new RaisedButton(
-//                      onPressed: () => setAnswer(false),
-//                      color: Colors.red,
-//                    ),
-//                    new RaisedButton(
-//                      onPressed: () => setAnswer(true),
-//                      color: Colors.green,
-//                    )
                     new AnswerButton(false, () => setAnswer(false)),
                     new AnswerButton(true, () => setAnswer(true)),
                   ],

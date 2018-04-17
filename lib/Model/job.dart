@@ -7,8 +7,10 @@ class Job {
   Map<String, bool> candidates;
   String title;
   String description;
+  String duration;
+  String rate;
 
-  Job(this.employerId, this.workerId, this.candidates, this.title, this.description);
+  Job(this.employerId, this.workerId, this.candidates, this.title, this.description, this.duration, this.rate);
 
   Job.fromSnapshot(DataSnapshot snapshot) :
         key = snapshot.key,
@@ -16,7 +18,9 @@ class Job {
         workerId = snapshot.value["workerId"],
         candidates = snapshot.value["candidates"],
         title = snapshot.value["title"],
-        description = snapshot.value["description"];
+        description = snapshot.value["description"],
+        duration = snapshot.value["duration"],
+        rate = snapshot.value["rate"];
 
   toJson() {
     return {
@@ -24,7 +28,11 @@ class Job {
       "workerId" : workerId,
       "candidates" : candidates,
       "title" : title,
-      "description" : description
+      "description" : description,
+      "duration" : duration,
+      "rate" : rate
     };
   }
+
+
 }

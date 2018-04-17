@@ -1,10 +1,10 @@
 import "package:flutter/material.dart";
-import 'package:lancelot_v2/Model/Project.dart';
+import 'package:lancelot_v2/Model/job.dart';
 import 'package:lancelot_v2/UI/ProjectInfoWidget.dart';
 
 class ProjectDetailPage extends StatefulWidget {
 
-  final Project _project;
+  final Job _project;
 
   ProjectDetailPage(this._project);
 

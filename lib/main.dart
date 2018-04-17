@@ -5,16 +5,20 @@ import 'Model/worker.dart';
 import 'Model/employer.dart';
 import 'Model/job.dart';
 
-void main() => runApp(new MyApp());
+void main() {
+  runApp(new MyApp());
+}
 
 class MyApp extends StatelessWidget {
   final fb = new FirebaseDB();
   // This widget is the root of your application.
+
   @override
   Widget build(BuildContext context) {
 
     // This is just a test for the db
-    testDb();
+    //testDb();
+    fb.signInUser();
 
     return new MaterialApp(
       title: 'Lancelot',
@@ -42,7 +46,7 @@ class MyApp extends StatelessWidget {
     print("Done getting job data");
     print(job.toJson());
 
-    List<Job> recJobs = await fb.getNewJobRecs(["new", "undecided"]);
+    List<Job> recJobs = await fb.getNewJobRecs([FirebaseDB.newState, FirebaseDB.undecidedState, FirebaseDB.acceptedState, FirebaseDB.rejectedState]);
     print("Done getting recommended jobs");
     recJobs.forEach((job) => print(job.toJson()));
 

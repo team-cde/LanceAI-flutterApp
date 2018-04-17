@@ -6,16 +6,18 @@ import 'Model/worker.dart';
 import 'Model/employer.dart';
 import 'Model/job.dart';
 
-
 class FirebaseDB {
+
   var workersReference;
   var employersReference;
   var jobsReference;
 
-  final FirebaseAuth _auth = FirebaseAuth.instance;
-  final GoogleSignIn _googleSignIn = new GoogleSignIn();
+  static FirebaseAuth _auth = FirebaseAuth.instance;
+  static  GoogleSignIn _googleSignIn = new GoogleSignIn();
   FirebaseUser user;
   String thisUid = "12345";
+
+  bool isSignedIn = false;
 
   static const String newState = "new";
   static const String undecidedState = "undecided";
@@ -29,6 +31,9 @@ class FirebaseDB {
   }
 
   signInUser() async {
+
+    if (isSignedIn) return;
+
     GoogleSignInAccount googleUser = await _googleSignIn.signIn();
     GoogleSignInAuthentication googleAuth = await googleUser.authentication;
     user = await _auth.signInWithGoogle(
@@ -40,6 +45,7 @@ class FirebaseDB {
     jobsReference = FirebaseDatabase.instance.reference().child('jobs');
     await registerUser();
 
+    isSignedIn = true;
     //thisUid = user.uid;
   }
 
@@ -75,6 +81,11 @@ class FirebaseDB {
   // matched to and have hor have not yet provided an evaluation for
   // Query supports list of multiple recommendation states
   // (new, undecided, accepted, rejected)
+
+  Future<List<Job>> getAllJobs() {
+    return getNewJobRecs([newState, undecidedState, acceptedState, rejectedState]);
+  }
+
   Future<List<Job>> getNewJobRecs(List<String> stateList) async {
     Worker worker = await getWorkerData();
     List<Job> jobs = new List();

@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:lancelot_v2/Model/Project.dart';
-
+import 'package:lancelot_v2/Model/job.dart';
 
 class ProjectInfo extends StatefulWidget {
 
-  Project _project;
+  Job _project;
 
   ProjectInfo(this._project);
 
@@ -20,9 +19,9 @@ class ProjectInfoState extends State<ProjectInfo> {
       child: new Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          new Text(widget._project.name, style: new TextStyle(fontSize: 40.0, fontWeight: FontWeight.bold)),
-          new Text(widget._project.company, style: new TextStyle(fontSize: 40.0, fontWeight: FontWeight.bold)),
-          new Text(widget._project.price, style: new TextStyle(fontSize: 40.0, fontWeight: FontWeight.bold)),
+          new Text(widget._project.title, style: new TextStyle(fontSize: 40.0, fontWeight: FontWeight.bold)),
+          new Text(widget._project.employerId, style: new TextStyle(fontSize: 40.0, fontWeight: FontWeight.bold)),
+          new Text(widget._project.rate, style: new TextStyle(fontSize: 40.0, fontWeight: FontWeight.bold)),
           new Text(widget._project.duration, style: new TextStyle(fontSize: 40.0, fontWeight: FontWeight.bold)),
         ],
       ),
