@@ -8,21 +8,30 @@ import 'Model/job.dart';
 
 class FirebaseDB {
 
-  var workersReference;
-  var employersReference;
-  var jobsReference;
+  static final FirebaseDB _singleton = new FirebaseDB._internal();
+
+  static var workersReference;
+  static var employersReference;
+  static var jobsReference;
 
   static FirebaseAuth _auth = FirebaseAuth.instance;
-  static  GoogleSignIn _googleSignIn = new GoogleSignIn();
-  FirebaseUser user;
-  String thisUid = "12345";
-
-  bool isSignedIn = false;
+  static GoogleSignIn _googleSignIn = new GoogleSignIn();
+  static FirebaseUser user;
+  static String thisUid = "12345";
+  static bool signInCompleted = false;
 
   static const String newState = "new";
   static const String undecidedState = "undecided";
   static const String acceptedState = "accepted";
   static const String rejectedState = "rejected";
+
+  factory FirebaseDB() {
+    return _singleton;
+  }
+
+  FirebaseDB._internal() {
+    //signInUser();
+  }
 
   // TODO: Perform a registration process if
   // the user is not yet in the database
@@ -31,9 +40,6 @@ class FirebaseDB {
   }
 
   signInUser() async {
-
-    if (isSignedIn) return;
-
     GoogleSignInAccount googleUser = await _googleSignIn.signIn();
     GoogleSignInAuthentication googleAuth = await googleUser.authentication;
     user = await _auth.signInWithGoogle(
@@ -44,9 +50,8 @@ class FirebaseDB {
     employersReference = FirebaseDatabase.instance.reference().child('employers');
     jobsReference = FirebaseDatabase.instance.reference().child('jobs');
     await registerUser();
-
-    isSignedIn = true;
     //thisUid = user.uid;
+    signInCompleted = true;
   }
 
   ensureSignedIn() async {

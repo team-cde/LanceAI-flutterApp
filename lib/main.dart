@@ -5,20 +5,20 @@ import 'Model/worker.dart';
 import 'Model/employer.dart';
 import 'Model/job.dart';
 
+
 void main() {
   runApp(new MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  final fb = new FirebaseDB();
   // This widget is the root of your application.
+  final fb = new FirebaseDB();
 
   @override
   Widget build(BuildContext context) {
 
     // This is just a test for the db
     //testDb();
-    fb.signInUser();
 
     return new MaterialApp(
       title: 'Lancelot',
@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
 
   void testDb() async {
     print("Testing DB");
-    await fb.signInUser();
+    //await fb.signInUser();
 
     Worker worker = await fb.getWorkerData();
     print("Done getting worker data");

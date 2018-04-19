@@ -22,12 +22,21 @@ class HomePageState extends State<HomePage> {
           appBar: new AppBar(
             bottom: new TabBar(
               tabs: [
-                new Tab(icon: new Icon(Icons.view_list)),
-                new Tab(icon: new Icon(Icons.insert_emoticon)),
-                new Tab(icon: new Icon(Icons.person)),
+                new Tab(
+                    icon: new Icon(Icons.view_list),
+                    //text: "List"
+                ),
+                new Tab(
+                    icon: new Icon(Icons.insert_emoticon),
+                    //text: "Browse"
+                ),
+                new Tab(
+                    icon: new Icon(Icons.person),
+                    //text: "Profile"
+                ),
               ],
             ),
-            title: new Text('LANCELOT'),
+            title: new Text('Lancelot'),
           ),
           body: new TabBarView(
             children: [

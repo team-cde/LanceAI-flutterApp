@@ -30,17 +30,18 @@ class ProjectBrowsePageState extends State<ProjectBrowsePage> {
 
   void updateProjectList() async {
     _projects = await fb.getAllJobs();
-    setState(() {
-
-    });
+    if (this.mounted) {
+      setState(() {});
+    }
   }
 
   void setAnswer(bool answer) {
     _answer = answer;
-
-    this.setState(() {
-      _isFeedbackOverlayVisible = true;
-    });
+    if (this.mounted) {
+      this.setState(() {
+        _isFeedbackOverlayVisible = true;
+      });
+    }
   }
 
   void incrementProject() {
@@ -78,12 +79,14 @@ class ProjectBrowsePageState extends State<ProjectBrowsePage> {
               ],
             ),
             _isFeedbackOverlayVisible == true ? new FeedbackOverlay (
-                _answer,
-                    () {
-                  this.setState(() {
-                    _isFeedbackOverlayVisible = false;
-                    incrementProject();
-                  });
+                _answer, () {
+                  // Exception if the widget calls setState() after dispose()
+                  if (this.mounted) {
+                    this.setState(() {
+                      _isFeedbackOverlayVisible = false;
+                      incrementProject();
+                    });
+                  }
                 }
             ) : new Container()
 
