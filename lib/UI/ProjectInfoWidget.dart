@@ -18,6 +18,7 @@ class ProjectInfoState extends State<ProjectInfo> {
     return new Material(
       child: new Column(
         mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           new Text(widget._project.title, style: new TextStyle(fontSize: 40.0, fontWeight: FontWeight.bold)),
           new Text(widget._project.employerId, style: new TextStyle(fontSize: 40.0, fontWeight: FontWeight.bold)),

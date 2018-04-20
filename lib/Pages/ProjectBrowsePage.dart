@@ -5,6 +5,7 @@ import 'package:lancelot_v2/Pages/FeedbackOverlay.dart';
 import 'package:lancelot_v2/UI/AnswerButton.dart';
 import 'package:lancelot_v2/firebase_db.dart';
 import 'package:lancelot_v2/Model/job.dart';
+import 'package:flutter/cupertino.dart';
 
 class ProjectBrowsePage extends StatefulWidget {
   @override
@@ -14,7 +15,7 @@ class ProjectBrowsePage extends StatefulWidget {
 }
 
 class ProjectBrowsePageState extends State<ProjectBrowsePage> {
-  List<Job> _projects = [new Job("1","1",{},"title","description","3 months","350/hr")];
+  List<Job> _projects = [new Job("Loading...","",{},"","","","")];
   int _projectIndex;
   bool _answer;
   bool _isFeedbackOverlayVisible;
@@ -26,6 +27,7 @@ class ProjectBrowsePageState extends State<ProjectBrowsePage> {
     super.initState();
     _projectIndex = 0;
     updateProjectList();
+    print("heeeeeey");
   }
 
   void updateProjectList() async {
@@ -67,13 +69,42 @@ class ProjectBrowsePageState extends State<ProjectBrowsePage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 new ProjectInfo(currProject()),
+              ],
+            ),
+            new Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: <Widget>[
                 new Padding(padding: new EdgeInsets.all(20.0)),
                 new Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
-                    new AnswerButton(false, () => setAnswer(false)),
-                    new AnswerButton(true, () => setAnswer(true)),
+//                    new AnswerButton(false, () => setAnswer(false)),
+//                    new AnswerButton(true, () => setAnswer(true)),
+                    new Container(
+                      padding: new EdgeInsets.all(45.0),
+                      color: Colors.red,
+                      child: new IconButton(
+                        icon: new Icon(Icons.thumb_down),
+                        onPressed: () => setAnswer(false),
+                        splashColor: Colors.red,
+                        disabledColor: Colors.grey,
+                        iconSize: 80.0,
+                      ),
+                    ),
+                    new Container(
+                      padding: new EdgeInsets.all(45.0),
+                      color: Colors.green,
+                      child: new IconButton(
+                        icon: new Icon(Icons.thumb_up),
+                        onPressed: () => setAnswer(true),
+                        splashColor: Colors.green,
+                        disabledColor: Colors.grey,
+                        iconSize: 80.0,
+                      ),
+                    ),
+
+
                   ],
                 )
               ],

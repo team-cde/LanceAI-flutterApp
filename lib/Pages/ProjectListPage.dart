@@ -7,6 +7,7 @@ import 'package:lancelot_v2/Model/job.dart';
 import 'package:lancelot_v2/Pages/ProjectDetailPage.dart';
 
 class ProjectListPage extends StatefulWidget {
+
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
@@ -15,6 +16,13 @@ class ProjectListPage extends StatefulWidget {
 }
 
 class ProjectListPageState extends State<ProjectListPage> {
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
+
   final FirebaseDB db = new FirebaseDB();
 
   Widget getJobsFromTheFuture() {

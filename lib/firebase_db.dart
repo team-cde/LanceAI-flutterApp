@@ -25,6 +25,8 @@ class FirebaseDB {
   static const String acceptedState = "accepted";
   static const String rejectedState = "rejected";
 
+  Future<List<Job>> jobsCache = null;
+
   factory FirebaseDB() {
     return _singleton;
   }
@@ -88,7 +90,12 @@ class FirebaseDB {
   // (new, undecided, accepted, rejected)
 
   Future<List<Job>> getAllJobs() {
-    return getNewJobRecs([newState, undecidedState, acceptedState, rejectedState]);
+
+    if (jobsCache == null) {
+      jobsCache = getNewJobRecs([newState, undecidedState, acceptedState, rejectedState]);
+    }
+
+    return jobsCache;;
   }
 
   Future<List<Job>> getNewJobRecs(List<String> stateList) async {
@@ -119,6 +126,7 @@ class FirebaseDB {
         jobs.add(job);
       }
     });
+
     return jobs;
   }
 
