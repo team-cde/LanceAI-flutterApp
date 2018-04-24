@@ -15,7 +15,7 @@ class ProjectBrowsePage extends StatefulWidget {
 }
 
 class ProjectBrowsePageState extends State<ProjectBrowsePage> {
-  List<Job> _projects = [new Job("Loading...","",{},"","","","")];
+  List<Job> _projects = [new Job("Loading...","",{},"","","","",""   )];
   int _projectIndex;
   bool _answer;
   bool _isFeedbackOverlayVisible;
@@ -59,24 +59,55 @@ class ProjectBrowsePageState extends State<ProjectBrowsePage> {
 
   void handleAnswer(bool answer) {}
 
+  Widget buildCard() {
+    return new Card(
+      child: new Column(
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          const ListTile(
+            leading: const Icon(Icons.album),
+            title: const Text('The Enchanted Nightingale'),
+            subtitle: const Text('Music by Julie Gable. Lyrics by Sidney Stein.'),
+          ),
+          new ButtonTheme.bar( // make buttons use the appropriate styles for cards
+            child: new ButtonBar(
+              children: <Widget>[
+                new FlatButton(
+                  child: const Text('BUY TICKETS'),
+                  onPressed: () { /* ... */ },
+                ),
+                new FlatButton(
+                  child: const Text('LISTEN'),
+                  onPressed: () { /* ... */ },
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return new Material(
         child: new Stack(
           fit: StackFit.expand,
           children: <Widget>[
+//            new Column(
+//              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+//              children: <Widget>[
+//                new ProjectInfo(currProject()),
+//                //buildCard(),
+//              ],
+//            ),
             new Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
                 new ProjectInfo(currProject()),
-              ],
-            ),
-            new Column(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: <Widget>[
-                new Padding(padding: new EdgeInsets.all(20.0)),
+                //new Padding(padding: new EdgeInsets.all(20.0)),
                 new Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
 //                    new AnswerButton(false, () => setAnswer(false)),
@@ -89,7 +120,7 @@ class ProjectBrowsePageState extends State<ProjectBrowsePage> {
                         onPressed: () => setAnswer(false),
                         splashColor: Colors.red,
                         disabledColor: Colors.grey,
-                        iconSize: 80.0,
+                        iconSize: 95.0,
                       ),
                     ),
                     new Container(
@@ -100,7 +131,7 @@ class ProjectBrowsePageState extends State<ProjectBrowsePage> {
                         onPressed: () => setAnswer(true),
                         splashColor: Colors.green,
                         disabledColor: Colors.grey,
-                        iconSize: 80.0,
+                        iconSize: 95.0,
                       ),
                     ),
 

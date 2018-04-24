@@ -9,8 +9,9 @@ class Job {
   String description;
   String duration;
   String rate;
+  String imgURL;
 
-  Job(this.employerId, this.workerId, this.candidates, this.title, this.description, this.duration, this.rate);
+  Job(this.employerId, this.workerId, this.candidates, this.title, this.description, this.duration, this.rate, this.imgURL);
 
   Job.fromSnapshot(DataSnapshot snapshot) :
         key = snapshot.key,
@@ -20,7 +21,8 @@ class Job {
         title = snapshot.value["title"],
         description = snapshot.value["description"],
         duration = snapshot.value["duration"],
-        rate = snapshot.value["rate"];
+        rate = snapshot.value["rate"],
+        imgURL = snapshot.value["imgURL"];
 
   toJson() {
     return {
@@ -30,7 +32,8 @@ class Job {
       "title" : title,
       "description" : description,
       "duration" : duration,
-      "rate" : rate
+      "rate" : rate,
+      "imgURL" : imgURL
     };
   }
 
