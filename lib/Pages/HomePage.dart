@@ -22,6 +22,13 @@ class HomePageState extends State<HomePage> {
         initialIndex: 1,
         child: new Scaffold(
           appBar: new AppBar(
+            title: new Text('LANCELOT',
+              style: new TextStyle(
+                fontFamily: "Josefin",
+                fontWeight: FontWeight.bold,
+              )),
+            centerTitle: true,
+
             bottom: new TabBar(
               tabs: [
                 new Tab(
@@ -38,7 +45,6 @@ class HomePageState extends State<HomePage> {
                 ),
               ],
             ),
-            title: new Text('Lancelot'),
           ),
           body: new TabBarView(
             children: [

@@ -89,56 +89,43 @@ class ProjectBrowsePageState extends State<ProjectBrowsePage> {
     );
   }
 
+
+  Widget buildAnswerButton(bool answerValue) {
+    return new Container(
+      padding: new EdgeInsets.all(25.0),
+      color: answerValue ? Colors.green : Colors.red,
+      child: new IconButton(
+        icon: answerValue ? new Icon(Icons.thumb_up) : new Icon(Icons.thumb_down),
+        onPressed: () => setAnswer(answerValue),
+        splashColor: answerValue ? Colors.green : Colors.red,
+        disabledColor: Colors.grey,
+        iconSize: 50.0,
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return new Material(
         child: new Stack(
           fit: StackFit.expand,
           children: <Widget>[
-//            new Column(
-//              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-//              children: <Widget>[
-//                new ProjectInfo(currProject()),
-//                //buildCard(),
-//              ],
-//            ),
             new Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
+                new Image.asset("images/lance_logo.png",
+                    fit: BoxFit.contain,
+                    scale: 3.5,
+                ),
                 new ProjectCard(currProject()),
-                //new ProjectInfo(currProject()),
                 new Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
-//                    new AnswerButton(false, () => setAnswer(false)),
-//                    new AnswerButton(true, () => setAnswer(true)),
-                    new Container(
-                      padding: new EdgeInsets.all(45.0),
-                      color: Colors.red,
-                      child: new IconButton(
-                        icon: new Icon(Icons.thumb_down),
-                        onPressed: () => setAnswer(false),
-                        splashColor: Colors.red,
-                        disabledColor: Colors.grey,
-                        iconSize: 95.0,
-                      ),
-                    ),
-                    new Container(
-                      padding: new EdgeInsets.all(45.0),
-                      color: Colors.green,
-                      child: new IconButton(
-                        icon: new Icon(Icons.thumb_up),
-                        onPressed: () => setAnswer(true),
-                        splashColor: Colors.green,
-                        disabledColor: Colors.grey,
-                        iconSize: 95.0,
-                      ),
-                    ),
-
-
+                    new Expanded(child: buildAnswerButton(false)),
+                    new Expanded(child: buildAnswerButton(true)),
                   ],
-                )
+                ),
               ],
             ),
             _isFeedbackOverlayVisible == true ? new FeedbackOverlay (

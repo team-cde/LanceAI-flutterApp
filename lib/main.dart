@@ -20,11 +20,15 @@ class MyApp extends StatelessWidget {
     // This is just a test for the db
     //testDb();
 
+    ThemeData theme = new ThemeData(
+      primaryColor: new Color.fromARGB(255, 105, 26, 178),
+      accentColor: new Color.fromARGB(255, 20, 207, 181),
+    );
+
+
     return new MaterialApp(
       title: 'Lancelot',
-      theme: new ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      theme: theme,
       //home: new ProjectBrowsePage(),
       home: new HomePage(),
     );

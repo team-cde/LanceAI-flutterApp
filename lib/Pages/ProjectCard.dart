@@ -15,24 +15,29 @@ class ProjectCard extends StatefulWidget {
 
 class ProjectCardState extends State<ProjectCard> {
 
+
   Widget buildHeadingAndContent(String heading, String content) {
-    return new Column(
-      mainAxisAlignment: MainAxisAlignment.start,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        new Text(heading,
-          style: Theme
-              .of(context)
-              .textTheme
-              .title,
-        ),
-        new Text(content,
-          style: Theme
-              .of(context)
-              .textTheme
-              .subhead,
-        )
-      ],
+    return new Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 0.0),
+      child: new Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          new Text(heading,
+            style: Theme
+                .of(context)
+                .textTheme
+                .title,
+          ),
+          new Padding(padding: new EdgeInsets.all(2.0)),
+          new Text(content,
+            style: Theme
+                .of(context)
+                .textTheme
+                .subhead,
+          )
+        ],
+      ),
     );
   }
 
@@ -46,7 +51,7 @@ class ProjectCardState extends State<ProjectCard> {
               child: new Padding(
                 padding: const EdgeInsets.symmetric(vertical: 12.0, horizontal: 24.0),
                 child: new Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: <Widget>[
                     new Row(
@@ -68,7 +73,7 @@ class ProjectCardState extends State<ProjectCard> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
                             buildHeadingAndContent(
-                                "Project", "Lancelot Branding"),
+                                "Project", widget._job.title),
                             buildHeadingAndContent(
                                 "Skills Required", "Branding, UI Design"),
                           ],
@@ -78,10 +83,10 @@ class ProjectCardState extends State<ProjectCard> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
                             buildHeadingAndContent(
-                                "Client Name", "Nick DePasquale"),
-                            buildHeadingAndContent("Rate", "50/hr"),
-                          ],
-                        )
+                                "Client Name", widget._job.employerId),
+                            buildHeadingAndContent("Rate", widget._job.rate),
+                          ]
+                        ),
                       ],
                     ),
                     new Row(
@@ -92,7 +97,7 @@ class ProjectCardState extends State<ProjectCard> {
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
-                              buildHeadingAndContent("Description", "u hello id like to speak to sombodeee today big booiiiii id like to take a beeg order of the chicken lo meain please bukbukbukbuk laoooo"),
+                              buildHeadingAndContent("Description", widget._job.description),
                             ],
                           ),
                         )
