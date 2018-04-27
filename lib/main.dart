@@ -4,7 +4,7 @@ import 'firebase_db.dart';
 import 'Model/worker.dart';
 import 'Model/employer.dart';
 import 'Model/job.dart';
-
+import 'Pages/BottomNavigationDemo.dart';
 
 void main() {
   runApp(new MyApp());

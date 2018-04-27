@@ -6,6 +6,7 @@ import 'package:lancelot_v2/UI/AnswerButton.dart';
 import 'package:lancelot_v2/firebase_db.dart';
 import 'package:lancelot_v2/Model/job.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:lancelot_v2/Pages/ProjectCard.dart';
 
 class ProjectBrowsePage extends StatefulWidget {
   @override
@@ -104,8 +105,8 @@ class ProjectBrowsePageState extends State<ProjectBrowsePage> {
             new Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
-                new ProjectInfo(currProject()),
-                //new Padding(padding: new EdgeInsets.all(20.0)),
+                new ProjectCard(currProject()),
+                //new ProjectInfo(currProject()),
                 new Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
