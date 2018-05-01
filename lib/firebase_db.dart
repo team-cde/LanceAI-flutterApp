@@ -94,8 +94,7 @@ class FirebaseDB {
     if (jobsCache == null) {
       jobsCache = getNewJobRecs([newState, undecidedState, acceptedState, rejectedState]);
     }
-
-    return jobsCache;;
+    return jobsCache;
   }
 
   Future<List<Job>> getNewJobRecs(List<String> stateList) async {
@@ -123,6 +122,9 @@ class FirebaseDB {
       int recStatus = recs[jobId];
       if (states.contains(recStatus)) {
         Job job = await getJobData(jobId);
+        Employer _employer = await getEmployerData(job.employerId);
+        String _employerName = _employer.firstName + " " + _employer.lastName;
+        job.employerName = _employerName;
         jobs.add(job);
       }
     });

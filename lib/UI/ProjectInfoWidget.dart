@@ -18,7 +18,7 @@ class ProjectInfoState extends State<ProjectInfo> {
       new Text(widget._project.title,
           style: new TextStyle(fontSize: 40.0, fontWeight: FontWeight.bold)),
       //new Text(widget._project.employerId, style: new TextStyle(fontSize: 40.0, fontWeight: FontWeight.bold)),
-      new Text(widget._project.rate,
+      new Text("\$" + widget._project.rate,
           style: new TextStyle(fontSize: 40.0, fontWeight: FontWeight.bold)),
       new Text(widget._project.duration,
           style: new TextStyle(fontSize: 40.0, fontWeight: FontWeight.bold)),
@@ -76,9 +76,15 @@ class ProjectInfoState extends State<ProjectInfo> {
                       child: new FittedBox(
                         fit: BoxFit.scaleDown,
                         alignment: Alignment.centerLeft,
-                        child: new Text(
-                          widget._project.title,
-                          style: titleStyle,
+                        child: new Container(
+                          child: new Text(
+                            widget._project.title,
+                            style: titleStyle,
+                          ),
+                          decoration: new BoxDecoration (
+                              color: Colors.black,
+                              borderRadius: new BorderRadius.circular(3.0),
+                          ),
                         ),
                       ),
                     ),
@@ -105,7 +111,7 @@ class ProjectInfoState extends State<ProjectInfo> {
                                 color: Colors.black54),
                           ),
                         ),
-                        new Text(widget._project.rate,
+                        new Text("\$" + widget._project.rate,
                             style: new TextStyle(
                               fontSize: 17.0,
                               fontWeight: FontWeight.bold,

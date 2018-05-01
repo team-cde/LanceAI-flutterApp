@@ -1,5 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:lancelot_v2/Model/Project.dart';
+import 'package:lancelot_v2/UI/ProjectInfoWidget.dart';
+
 
 import 'package:lancelot_v2/firebase_db.dart';
 import 'package:flutter/material.dart';
@@ -39,12 +41,13 @@ class ProjectListPageState extends State<ProjectListPage> {
               return new ListView.builder(
                   itemCount: snapshot.data.length,
                   itemBuilder: (context, index) {
-                    return new ListTile(
+                    /*return new ListTile(
                       title: new Text(snapshot.data[index].title),
                       onTap: () {
                         Navigator.push(context, new MaterialPageRoute(builder: (context) => new ProjectDetailPage(snapshot.data[index])));
                       },
-                    );
+                    );*/
+                    return new ProjectInfo(snapshot.data[index]);
                   });
         }
       },

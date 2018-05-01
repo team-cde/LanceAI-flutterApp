@@ -57,7 +57,8 @@ class ProjectCardState extends State<ProjectCard> {
                     new Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: <Widget>[
-                        new Text("Available Jobs",
+                        //new Text(widget._job.title,
+                          new Text("Recommendation",
                           style: Theme
                               .of(context)
                               .textTheme
@@ -83,8 +84,8 @@ class ProjectCardState extends State<ProjectCard> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
                             buildHeadingAndContent(
-                                "Client Name", widget._job.employerId),
-                            buildHeadingAndContent("Rate", widget._job.rate),
+                                "Client Name", widget._job.employerName),
+                            buildHeadingAndContent("Rate", "\$" + widget._job.rate),
                           ]
                         ),
                       ],

@@ -5,6 +5,7 @@ import 'package:lancelot_v2/Pages/FeedbackOverlay.dart';
 import 'package:lancelot_v2/UI/AnswerButton.dart';
 import 'package:lancelot_v2/firebase_db.dart';
 import 'package:lancelot_v2/Model/job.dart';
+import 'package:lancelot_v2/Model/employer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:lancelot_v2/Pages/ProjectCard.dart';
 
@@ -16,7 +17,7 @@ class ProjectBrowsePage extends StatefulWidget {
 }
 
 class ProjectBrowsePageState extends State<ProjectBrowsePage> {
-  List<Job> _projects = [new Job("Loading...","",{},"","","","",""   )];
+  List<Job> _projects = [new Job("Loading...","",{},"","","","","")];
   int _projectIndex;
   bool _answer;
   bool _isFeedbackOverlayVisible;
@@ -33,6 +34,11 @@ class ProjectBrowsePageState extends State<ProjectBrowsePage> {
 
   void updateProjectList() async {
     _projects = await fb.getAllJobs();
+    /*for (Job _project in _projects) {
+      Employer _employer = await fb.getEmployerData(_project.employerId);
+      String _employerName = _employer.firstName + " " + _employer.lastName;
+      _project.employerName = _employerName;
+    }*/
     if (this.mounted) {
       setState(() {});
     }
@@ -113,10 +119,10 @@ class ProjectBrowsePageState extends State<ProjectBrowsePage> {
             new Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
-                new Image.asset("images/lance_logo.png",
+                /*new Image.asset("images/lance_logo.png",
                     fit: BoxFit.contain,
-                    scale: 3.5,
-                ),
+                    scale: 3.0,
+                ),*/
                 new ProjectCard(currProject()),
                 new Row(
                   mainAxisAlignment: MainAxisAlignment.center,
