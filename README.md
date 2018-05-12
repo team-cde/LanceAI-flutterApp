@@ -1,8 +1,3 @@
-# lancelot_v2
+# Lancelot Mobile App
 
-A new Flutter application.
-
-## Getting Started
-
-For help getting started with Flutter, view our online
-[documentation](https://flutter.io/).
+This is the application that interfaces with freelancers on the Lancelot platform.
